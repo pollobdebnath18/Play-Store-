@@ -16,8 +16,12 @@ const Navbar = () => {
     },
     {
       name: "Installation",
-      to: "/installApps",
+      to: "/installapps",
     },
+    {
+      name: 'Dashboard',
+      to:'/dashboard'
+    }
 
     // <li >
     //   <MyNavLink  to="/">Home</MyNavLink>

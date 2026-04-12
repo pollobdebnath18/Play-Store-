@@ -2,9 +2,10 @@ import { createBrowserRouter } from "react-router";
 import Root from "../layout/Root";
 import HomePage from "../pages/homepage/HomePage";
 import Apps from "../pages/apps/Apps";
-import InstallApps from "../pages/installApps/InstallApps";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import AppDetails from "../pages/appDetails/AppDetails";
+import InstallAppsPage from "../pages/installapps/InstallAppsPage";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 export const router = createBrowserRouter([
   {
@@ -22,14 +23,17 @@ export const router = createBrowserRouter([
       },
       {
         path: "/installapps",
-        Component: InstallApps,
+        Component: InstallAppsPage,
       },
       {
-        path:'/apps/:id',
-        Component: AppDetails
+        path: "/apps/:id",
+        Component: AppDetails,
+      },
+      {
+        path:'/dashboard',
+        Component: Dashboard
       }
-     
     ],
-    errorElement: <NotFoundPage></NotFoundPage>
+    errorElement: <NotFoundPage></NotFoundPage>,
   },
 ]);

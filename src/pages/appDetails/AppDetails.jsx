@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router";
 import useApps from "../../hooks/useApps";
 import { HashLoader } from "react-spinners";
@@ -6,16 +6,20 @@ import DownloadImg from "../../assets/images/icon-downloads.png";
 import RatingImg from "../../assets/images/icon-ratings.png";
 import ReveiwImg from "../../assets/images/icon-review.png";
 import Chart from "./chart";
+import { InstalledAppContext } from "../../context/InstalledAppProvider";
+import { toast } from "react-toastify";
 
 const AppDetails = () => {
   const { id } = useParams();
   const { apps, loading } = useApps();
   //   console.log(typeof id, apps, loading);
+  const { installApps, setInstallApps } = useContext(InstalledAppContext);
+  console.log(installApps);
 
   if (loading) {
     return (
       <>
-        <div className="flex justify-center items-center pt-5">
+        <div className="flex justify-center items-center mt-32 mb-52">
           <HashLoader color="#00D390" />
         </div>
       </>
@@ -36,11 +40,25 @@ const AppDetails = () => {
     ratings,
   } = expectedApp;
 
+  const handleInstall = (expectedApp) => {
+    const checkApp = installApps.find((ap) => ap.id === expectedApp.id);
+    if (!checkApp) {
+      setInstallApps([...installApps, expectedApp]);
+      toast.success(`${expectedApp.title} Successfully installed`);
+    } else {
+      toast.error(`${expectedApp.title} is already installed`);
+    }
+  };
+
   return (
     <div className="max-w-[1200px] mx-auto my-16">
       <div className="flex flex-col md:flex-row items-center gap-4 px-10 py-5">
         <div className="shadow-lg bg-white w-full md:w-[30%] flex justify-center items-center p-6">
-          <img className="w-[300px] h-[300px] object-contain" src={image} alt="image" />
+          <img
+            className="w-[300px] h-[300px] rounded-xl object-contain"
+            src={image}
+            alt="image"
+          />
         </div>
         <div className="space-y-6 bg-blue-50 w-full md:w-[70%] px-10 py-10 rounded-lg">
           <div>
@@ -55,34 +73,47 @@ const AppDetails = () => {
               <img src={DownloadImg} alt="downloads" />
               <div className="flex flex-col">
                 <span>Downloads</span>
-                <span className="text-2xl text-[#001931] font-bold">{downloads}</span>
+                <span className="text-2xl text-[#001931] font-bold">
+                  {downloads}
+                </span>
               </div>
             </div>
             <div>
-                <div>
-              <img src={RatingImg} alt="rating" />
-              <div className="flex flex-col">
-                <span>Average Ratings</span>
-                <span className="text-2xl text-[#001931] font-bold">{ratingAvg}</span>
+              <div>
+                <img src={RatingImg} alt="rating" />
+                <div className="flex flex-col">
+                  <span>Average Ratings</span>
+                  <span className="text-2xl text-[#001931] font-bold">
+                    {ratingAvg}
+                  </span>
+                </div>
               </div>
-            </div>
             </div>
             <div>
-                <div>
-              <img src={ReveiwImg} alt="reviews" />
-              <div className="flex flex-col">
-                <span>Total Reviews</span>
-                <span className="text-2xl text-[#001931] font-bold">{reviews}</span>
+              <div>
+                <img src={ReveiwImg} alt="reviews" />
+                <div className="flex flex-col">
+                  <span>Total Reviews</span>
+                  <span className="text-2xl text-[#001931] font-bold">
+                    {reviews}
+                  </span>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           <div>
-            <button className="btn text-white bg-[#00D390]">Install Now ({size}MB)</button>
+            <button
+              onClick={() => handleInstall(expectedApp)}
+              className="btn text-white bg-[#00D390]"
+            >
+              Install Now ({size}MB)
+            </button>
           </div>
         </div>
       </div>
-      <div className="border-t py-6"><h2 className="text-xl font-bold ml-10">Ratings</h2></div>
+      <div className="border-t py-6">
+        <h2 className="text-xl font-bold ml-10">Ratings</h2>
+      </div>
       <Chart ratings={ratings}></Chart>
 
       <div className="mt-10 py-6">

@@ -6,7 +6,7 @@ import { Link } from "react-router";
 
 const Apps = () => {
   const { apps, loading } = useApps();
-  console.log(apps, loading);
+//   console.log(apps, loading);
   return (
     <div className="max-w-[1200px] mx-auto my-16">
       <div className="text-center">
@@ -16,7 +16,7 @@ const Apps = () => {
         </p>
       </div>
       {loading ? (
-        <div className="flex justify-center items-center pt-5">
+        <div className="flex justify-center items-center mt-24 mb-52">
           <HashLoader color="#00D390" />
         </div>
       ) : (

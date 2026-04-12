@@ -1,36 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FaStar } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 import AppCard from "../ui/AppCard";
 import { HashLoader } from "react-spinners";
 import { Link } from "react-router";
+import useApps from "../../hooks/useApps";
 // import { useLoaderData } from "react-router";
 
 // const appsPromise = fetch("/data.json").then((res) => res.json());
 
 const TrendingApps = () => {
-  const [apps, setApps] = useState([]);
-  const [loading, setLoading] = useState(true);
-  // const apps = use(appsPromise);
-  // console.log(apps);
-
-  // const appsData = useLoaderData();
-  // console.log(appsData)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/data.json");
-      const data = await res.json();
-      console.log(data, "data");
-
-      setTimeout(() => {
-        setApps(data);
-        setLoading(false);
-      }, 2000);
-    };
-    fetchData();
-  }, []);
-  console.log(apps);
+  const { apps, loading } = useApps();
+  console.log(apps, loading);
   return (
     <div className="max-w-[1200px] mx-auto my-16">
       <div className="text-center">

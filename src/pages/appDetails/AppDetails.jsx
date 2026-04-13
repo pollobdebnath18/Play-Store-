@@ -12,9 +12,9 @@ import { toast } from "react-toastify";
 const AppDetails = () => {
   const { id } = useParams();
   const { apps, loading } = useApps();
-  //   console.log(typeof id, apps, loading);
+
   const { installApps, setInstallApps } = useContext(InstalledAppContext);
-  console.log(installApps);
+  console.log(apps, installApps);
 
   if (loading) {
     return (
@@ -40,8 +40,9 @@ const AppDetails = () => {
     ratings,
   } = expectedApp;
 
+  const checkApp = installApps.find((ap) => ap.id === expectedApp.id);
+
   const handleInstall = (expectedApp) => {
-    const checkApp = installApps.find((ap) => ap.id === expectedApp.id);
     if (!checkApp) {
       setInstallApps([...installApps, expectedApp]);
       toast.success(`${expectedApp.title} Successfully installed`);
@@ -104,7 +105,7 @@ const AppDetails = () => {
           <div>
             <button
               onClick={() => handleInstall(expectedApp)}
-              className="btn text-white bg-[#00D390]"
+              className={`btn text-white ${checkApp ? " bg-gray-300" : "bg-[#00D390]"}`}
             >
               Install Now ({size}MB)
             </button>

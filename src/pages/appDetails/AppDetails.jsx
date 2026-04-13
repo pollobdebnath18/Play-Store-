@@ -6,8 +6,8 @@ import DownloadImg from "../../assets/images/icon-downloads.png";
 import RatingImg from "../../assets/images/icon-ratings.png";
 import ReveiwImg from "../../assets/images/icon-review.png";
 import Chart from "./chart";
-import { InstalledAppContext } from "../../context/InstalledAppProvider";
 import { toast } from "react-toastify";
+import { InstalledAppContext } from "../../context/InstalledAppContext";
 
 const AppDetails = () => {
   const { id } = useParams();

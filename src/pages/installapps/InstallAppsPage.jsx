@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import { InstalledAppContext } from "../../context/InstalledAppProvider";
 import { FiDownload } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
 import { toast } from "react-toastify";
 import NotInstallAppPage from "./NotInstallAppPage";
+import { InstalledAppContext } from "../../context/InstalledAppContext";
 
 const InstallAppsPage = () => {
   const { installApps, setInstallApps } = useContext(InstalledAppContext);
-  console.log(installApps);
+  // console.log(installApps);
   const handleUnstallApp = (app) => {
     const remApp = installApps.filter((ip) => ip.id !== app.id);
     setInstallApps(remApp);
@@ -23,7 +23,7 @@ const InstallAppsPage = () => {
           </p>
         </div>
       )}
-      <div className="">
+      <div >
         {installApps.length === 0 ? (
           <NotInstallAppPage></NotInstallAppPage>
         ) : (

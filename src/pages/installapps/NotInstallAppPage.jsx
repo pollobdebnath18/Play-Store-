@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 const NotInstallAppPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center text-center py-20">
+    <div className="flex flex-col items-center justify-center text-center py-5">
       {/* Modern Icon */}
       <img
         src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png"

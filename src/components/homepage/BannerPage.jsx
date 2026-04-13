@@ -10,7 +10,7 @@ const BannerPage = () => {
           We Build <br /><span className="text-[#9F62F2]">Productive</span> Apps
         </h1>
         <p className="text-[#627382] w-[60%] mx-auto">
-          At HERO.IO, we craft innovative apps designed to make everyday life
+          At PLAY.STORE, we craft innovative apps designed to make everyday life
           simpler, smarter, and more exciting. Our goal is to turn your ideas
           into digital experiences that truly make an impact.
         </p>

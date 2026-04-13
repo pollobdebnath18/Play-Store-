@@ -11,7 +11,7 @@ import useApps from "../../hooks/useApps";
 
 const TrendingApps = () => {
   const { apps, loading } = useApps();
-  // console.log(apps, loading);
+  //  console.log(apps, loading);
   return (
     <div className="max-w-[1200px] mx-auto my-16">
       <div className="text-center">

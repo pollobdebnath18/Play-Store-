@@ -22,17 +22,18 @@ export const router = createBrowserRouter([
         Component: Apps,
       },
       {
-        path: "/installapps",
-        Component: InstallAppsPage,
-      },
-      {
         path: "/apps/:id",
         Component: AppDetails,
       },
       {
-        path:'/dashboard',
-        Component: Dashboard
-      }
+        path: "/installapps",
+        Component: InstallAppsPage,
+      },
+
+      {
+        path: "/dashboard",
+        Component: Dashboard,
+      },
     ],
     errorElement: <NotFoundPage></NotFoundPage>,
   },

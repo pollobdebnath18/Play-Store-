@@ -11,7 +11,7 @@ const Navbar = () => {
       to: "/",
     },
     {
-      name: "apps",
+      name: "Apps",
       to: "/apps",
     },
     {

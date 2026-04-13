@@ -1,6 +1,5 @@
-import React, { createContext, useState } from "react";
-
-export const InstalledAppContext = createContext();
+import React, { useState } from "react";
+import { InstalledAppContext } from "./InstalledAppContext";
 
 const InstalledAppProvider = ({ children }) => {
   const [installApps, setInstallApps] = useState([]);
